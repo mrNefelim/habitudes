@@ -22,5 +22,5 @@ Route::group(['prefix' => 'habitudes'], function()
     Route::get('/', ['uses' => 'HabitudeController@all']);
     Route::post('/', ['uses' => 'HabitudeController@create']);
     Route::put('/{id}', ['uses' => 'HabitudeController@update']);
-    Route::delete('/{id}', ['uses' => 'HabitudeController@update']);
+    Route::delete('/{id}', ['uses' => 'HabitudeController@delete']);
 });
