@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'habitudes'], function()
+{
+    Route::get('/', ['uses' => 'HabitudeController@all']);
+    Route::post('/', ['uses' => 'HabitudeController@create']);
+    Route::put('/{id}', ['uses' => 'HabitudeController@update']);
+    Route::delete('/{id}', ['uses' => 'HabitudeController@update']);
+});
