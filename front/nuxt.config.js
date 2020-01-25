@@ -37,7 +37,8 @@ module.exports = {
   },
 
   modules: [
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@neneos/nuxt-animate.css'
   ]
 }
 
