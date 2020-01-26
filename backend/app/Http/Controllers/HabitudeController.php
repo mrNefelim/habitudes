@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Habitude;
 use App\Http\Requests\HabitudeRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HabitudeController extends Controller
 {
-    public function all()
+    public function all(Request $request)
     {
-        return response()->json(Habitude::all());
+        return response()->json(Habitude::whereUserId($request->user()->id)->get());
     }
 
     public function create(HabitudeRequest $request)
     {
-        return response()->json(Habitude::create($request->toArray()));
+        $habitude = $request->toArray();
+        $habitude['user_id'] = $request->user()->id;
+
+        return response()->json(Habitude::create($habitude));
     }
 
     public function update(HabitudeRequest $request)

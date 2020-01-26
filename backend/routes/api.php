@@ -12,12 +12,15 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'user'], function()
+{
+    Route::post('/register', ['uses' => 'UserController@register']);
+    Route::post('/auth', ['uses' => 'UserController@auth']);
+    Route::middleware('auth:api')->get('/logout', ['uses' => 'UserController@logout']);
 });
 
-Route::group(['prefix' => 'habitudes'], function()
+
+Route::group(['prefix' => 'habitudes', 'middleware' => ['auth:api']], function()
 {
     Route::get('/', ['uses' => 'HabitudeController@all']);
     Route::post('/', ['uses' => 'HabitudeController@create']);
@@ -26,7 +29,7 @@ Route::group(['prefix' => 'habitudes'], function()
 });
 
 
-Route::group(['prefix' => 'todo'], function()
+Route::group(['prefix' => 'todo', 'middleware' => ['auth:api']], function()
 {
     Route::get('/{$date}', ['uses' => 'TodoController@get']);
     Route::post('/', ['uses' => 'TodoController@create']);
