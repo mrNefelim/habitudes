@@ -24,3 +24,11 @@ Route::group(['prefix' => 'habitudes'], function()
     Route::put('/{id}', ['uses' => 'HabitudeController@update']);
     Route::delete('/{id}', ['uses' => 'HabitudeController@delete']);
 });
+
+
+Route::group(['prefix' => 'todo'], function()
+{
+    Route::get('/{$date}', ['uses' => 'TodoController@get']);
+    Route::post('/', ['uses' => 'TodoController@create']);
+    Route::delete('/{id}', ['uses' => 'TodoController@delete']);
+});
