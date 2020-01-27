@@ -1,0 +1,59 @@
+version: "3.3"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./server/nginx:/etc/nginx/conf.d
+      - ./logs:/var/log/nginx/
+      
+  nuxt:
+    build: ./front
+    networks:
+      - frontend
+    container_name: nuxt
+    volumes:
+      - ./front:/web
+    ports:
+      - 3000:3000
+
+  backend:
+    build: ./backend
+    container_name: backend
+    networks:
+      - backend
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www
+    environment:
+      DB_HOST: db
+      DB_DATABASE: habitudedb
+      DB_USERNAME: root
+      DB_PASSWORD:
+      DB_CONNECTION: mysql
+      
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: habitudedb
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    volumes:
+      - ./backend/databases:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  frontend:
+    external:
+      name: frontend
+  backend:
+    external:
+      name: frontend
