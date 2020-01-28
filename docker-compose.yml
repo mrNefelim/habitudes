@@ -56,4 +56,4 @@ networks:
       name: frontend
   backend:
     external:
-      name: frontend
+      name: backend
