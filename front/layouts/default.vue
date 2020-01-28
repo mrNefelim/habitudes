@@ -1,17 +1,20 @@
 <template>
   <div>
-    <Header/>
+    <custom_header/>
     <b-container>
-      <nuxt/>
+      <login />
+      <nuxt ref="page"/>
     </b-container>
   </div>
 </template>
 
 <script>
-  import Header from "./Header";
+  import custom_header from "./header";
+  import login from "../components/login";
   export default {
     components: {
-      Header
+      custom_header,
+      login
     }
   }
 

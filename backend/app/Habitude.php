@@ -35,4 +35,8 @@ class Habitude extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'user_id'];
+
+    public function todos(){
+        return $this->hasMany('App\Todo');
+    }
 }

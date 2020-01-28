@@ -21,9 +21,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    /*
-    ** Run ESLint on save
-    */
+    vendor: ['axios'],
     extend(config, {isDev, isClient}) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -38,7 +36,7 @@ module.exports = {
 
   modules: [
     'bootstrap-vue/nuxt',
-    '@neneos/nuxt-animate.css'
+    '@neneos/nuxt-animate.css',
   ]
 }
 

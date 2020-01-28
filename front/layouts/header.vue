@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: "Header",
+    name: "login",
     head: {
       meta: [
         {charset: 'utf-8'},

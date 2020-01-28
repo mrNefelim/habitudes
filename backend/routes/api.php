@@ -31,7 +31,7 @@ Route::group(['prefix' => 'habitudes', 'middleware' => ['auth:api']], function()
 
 Route::group(['prefix' => 'todo', 'middleware' => ['auth:api']], function()
 {
-    Route::get('/{$date}', ['uses' => 'TodoController@get']);
-    Route::post('/', ['uses' => 'TodoController@create']);
-    Route::delete('/{id}', ['uses' => 'TodoController@delete']);
+    Route::get('/{date?}', ['uses' => 'TodoController@get']);
+    Route::post('/bind', ['uses' => 'TodoController@bind']);
+    Route::post('/unbind', ['uses' => 'TodoController@unbind']);
 });
