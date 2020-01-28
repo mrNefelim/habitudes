@@ -37,16 +37,11 @@ class UserController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return response()->json([
-                'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised',
             ], 401);
         }
 
         $token = Auth::user()->createToken(config('app.name'));
-        $token->token->expires_at = $request->remember_me ?
-            Carbon::now()->addMonth() :
-            Carbon::now()->addDay();
-
         $token->token->save();
 
         return response()->json([
