@@ -12,5 +12,7 @@
 #### yarn install
 
 ## Запуск
+#### docker network create backend
+#### docker network create frontend
 #### docker-compose up -d
 #### Логин и пароль - admin@admin.com:12345678
