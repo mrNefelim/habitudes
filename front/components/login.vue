@@ -3,10 +3,10 @@
     <b-modal id='login' title='Авторизация'>
       <b-form>
         <b-form-group>
-          <b-form-input name='email' placeholder='email@email.com'/>
+          <b-form-input name='email' v-model="form.email" placeholder='email@email.com'/>
         </b-form-group>
         <b-form-group>
-          <b-form-input name='password' placeholder='password'/>
+          <b-form-input name='password' v-model="form.password" placeholder='password'/>
         </b-form-group>
       </b-form>
       <template v-slot:modal-footer>
@@ -34,8 +34,8 @@
     data() {
       return {
         'form': {
-          'email': 'admin23@admin.com',
-          'password': '12345678'
+          'email': '',
+          'password': ''
         }
       }
     },

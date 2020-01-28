@@ -97,7 +97,8 @@
         })
           .then((response) => {
             console.log(response);
-            todo.show = !todo.show
+            todo.show = !todo.show;
+            todo.month_todo++;
           })
           .catch(error => {
             console.log(error)
@@ -111,7 +112,8 @@
           headers: {Authorization: "Bearer " + this.token()}
         })
           .then((response) => {
-            todo.show = !todo.show
+            todo.show = !todo.show;
+            todo.month_todo--;
           })
           .catch(error => {
             console.log(error)
